@@ -3,8 +3,8 @@ from typing import Union
 import numpy as np
 import pandas as pd
 from transformers import PegasusForConditionalGeneration, PegasusTokenizer
-from faq_model.io import save_augmented_corpus
-from faq_model.sentence_encoder import SentenceEncoder
+from .io import save_augmented_corpus
+from .sentence_encoder import SentenceEncoder
 
 TORCH_DEVICE = 'cuda' if torch.cuda.is_available() else 'cpu'
 

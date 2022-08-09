@@ -1,7 +1,5 @@
 from typing import Union
 from sentence_transformers import SentenceTransformer, util
-from faq_model.preprocess import preprocess_sentence
-
 
 MODEL_CARD = 'multi-qa-mpnet-base-dot-v1'
 
@@ -29,6 +27,12 @@ class SentenceEncoder(object):
             convert_to_tensor=convert_to_tensor,
             normalize_embeddings=normalize_embeddings,
             show_progress_bar=show_progress_bar)
+
+
+def preprocess_sentence(sent):
+    norm_sent = str(sent).lower().strip().strip(string.punctuation).strip().capitalize()
+    norm_sent = replace_unicode_quote(norm_sent)
+    return norm_sent
 
 
 def dot_score(query_embedding, corpus_embeddings):
